@@ -4,10 +4,15 @@ app.controller('MainController', function(){
     this.name = 'ahmed'
 })
 
-app.directive('dropDownContent', function(){
+app.directive('dropDownContent', function(SendRequest){
     function link(scope, element, attrs) {
         let dropDown = element.parent()
-        dropDown.bind('mouseover', function() {
+        dropDown.bind('mouseenter', function() {
+            let response = SendRequest.sendRequest()
+            response.then((res)=> {
+                console.log(res)
+            })
+        
             element.children(':first').css('display', 'block')
         })
         dropDown.bind('mouseleave', function(){
@@ -20,3 +25,10 @@ app.directive('dropDownContent', function(){
         templateUrl: 'dropdown-content.html'
     }
 })
+
+app.service('SendRequest', ['$http', function($http){
+    this.sendRequest = ()=> {
+        console.log('sendRequest called')
+        return $http.get('http://localhost/Dropdowun%20example/data.json')
+    }
+}])
