@@ -1,0 +1,49 @@
+<html>
+
+<head>
+    <style>
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .main-container {
+            padding: 8px;
+            border: 1px solid red;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .main-container:hover {
+            background-color: blue;
+        }
+        
+        .items-container {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .items-container p {
+            padding: 20px 40px;
+        }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+</head>
+
+<body>
+    <div ng-app='MyApp' ng-controller='MainController as vm'>
+        <div class="dropdown">
+            <div class="main-container">
+                <p>Dropdown Menu</p>
+            </div>
+            <drop-down-content></drop-down-content>
+        </div>  
+    </div>
+    <script src="mainController.js"></script>
+</body>
+</html>
